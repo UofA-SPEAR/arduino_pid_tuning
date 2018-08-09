@@ -5,6 +5,9 @@
 #define PWM_PIN 12
 #define DIR_PIN 13
 
+#define ARM_MIN 200
+#define ARM_MAX 900
+
 float Kp = 0;
 float Ki = 0;
 float Kd = 0;
@@ -96,7 +99,7 @@ int main() {
             if (buf[0] == 'G' && buf[1] == 'O') {
                 sscanf(buf, "GO %d", &setpoint);
 
-                setpoint = constrain(setpoint, 300, 900);
+                setpoint = constrain(setpoint, ARM_MIN, ARM_MAX);
             }
         }
     }
